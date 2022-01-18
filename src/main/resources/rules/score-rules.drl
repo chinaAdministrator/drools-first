@@ -1,0 +1,39 @@
+package rules;
+
+import com.example.droolstest.pojo.Order;
+
+//100元以下，不加分
+rule "score_1"
+when
+    $order:Order(amout<100)
+then
+    $order.setScore(0);
+    System.out.println("触发规则：小于100元不加分");
+end
+
+//100元- 500元加100分
+rule "score_2"
+when
+    $order:Order(amout>=100&&amout < 500)
+then
+    $order.setScore(100);
+    System.out.println("触发规则：大于等于100且小于500加100分");
+end
+
+//500元- 1000元加500分
+rule "score_3"
+when
+    $order:Order(amout>=500&&amout < 1000)
+then
+    $order.setScore(500);
+    System.out.println("触发规则：大于等于500且小于1000加500分");
+end
+
+//1000元以上加1000分
+rule "score_4"
+when
+    $order:Order(amout>=1000)
+then
+    $order.setScore(1000);
+    System.out.println("触发规则：1000元以上(含1000)加1000分");
+end
