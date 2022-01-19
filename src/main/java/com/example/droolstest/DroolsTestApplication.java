@@ -9,5 +9,4 @@ public class DroolsTestApplication {
     public static void main(String[] args) {
         SpringApplication.run(DroolsTestApplication.class, args);
     }
-
 }

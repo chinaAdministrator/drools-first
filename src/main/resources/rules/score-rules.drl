@@ -25,8 +25,13 @@ rule "score_3"
 when
     $order:Order(amout>=500&&amout < 1000)
 then
-    $order.setScore(500);
-    System.out.println("触发规则：大于等于500且小于1000加500分");
+    if ($order.getAmout()<800){
+        $order.setScore(500);
+        System.out.println("触发规则：大于等于500且小于800加500分");
+    }else{
+        $order.setScore(800);
+        System.out.println("触发规则：大于等于800且小于1000加800分");
+    }
 end
 
 //1000元以上加1000分
